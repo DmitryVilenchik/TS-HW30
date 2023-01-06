@@ -3,7 +3,7 @@ const char_z: number=122;
 
 function shiftCipher(str: string, shift: number=1):string {
     let arr=str.split('');
-    if (shift%25==0) {shift=25} else {shift=shift%25}
+    if (shift%(char_z - char_a)==0) {shift=char_z - char_a} else {shift=shift%(char_z - char_a)}
     arr.forEach(function(v,i,a) {
         if (a[i].charCodeAt(0)>=char_a && a[i].charCodeAt(0)<=char_z)
         {let ss=v.charCodeAt(0)+shift;
@@ -18,7 +18,7 @@ function shiftCipher(str: string, shift: number=1):string {
 }
 function shiftDecipher(str: string, shift: number=1):string {
     let arr=str.split('');
-    if (shift%25==0) {shift=25} else {shift=shift%25}
+    if (shift%(char_z - char_a)==0) {shift=char_z - char_a} else {shift=shift%(char_z - char_a)}
     arr.forEach(function(v,i,a) {
         if (a[i].charCodeAt(0)>=char_a && a[i].charCodeAt(0)<=char_z)
         {let ss=v.charCodeAt(0)-shift;
