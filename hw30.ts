@@ -1,24 +1,30 @@
-function shiftCipher(str: string, shift: number):string {
+const char_a: number=97;
+const char_z: number=122;
+
+function shiftCipher(str: string, shift: number=1):string {
     let arr=str.split('');
+    if (shift%25==0) {shift=25} else {shift=shift%25}
     arr.forEach(function(v,i,a) {
-        if (a[i].charCodeAt(0)>=97 && a[i].charCodeAt(0)<=122)
+        if (a[i].charCodeAt(0)>=char_a && a[i].charCodeAt(0)<=char_z)
         {let ss=v.charCodeAt(0)+shift;
-                 if (ss>122) {
-                    //while (ss>122)
-                    a[i]=String.fromCharCode(ss-122+96)}   
+                 if (ss>char_z) {      
+                    
+                    a[i]=String.fromCharCode((char_a - 1)+(ss%char_z))
+                }
                  else {a[i]=String.fromCharCode(ss)};
         }
     });
     return arr.join('');
 }
-function shiftDecipher(str: string, shift: number):string {
+function shiftDecipher(str: string, shift: number=1):string {
     let arr=str.split('');
+    if (shift%25==0) {shift=25} else {shift=shift%25}
     arr.forEach(function(v,i,a) {
-        if (a[i].charCodeAt(0)>=97 && a[i].charCodeAt(0)<=122)
+        if (a[i].charCodeAt(0)>=char_a && a[i].charCodeAt(0)<=char_z)
         {let ss=v.charCodeAt(0)-shift;
-                 if (ss<97) {
+                 if (ss<char_a) {                 
                     
-                    a[i]=String.fromCharCode(122-97+ss)}   
+                    a[i]=String.fromCharCode((char_z + 1)-(char_a % ss))}
                  else {a[i]=String.fromCharCode(ss)};
         }
     });
@@ -26,6 +32,13 @@ function shiftDecipher(str: string, shift: number):string {
 }
 
 console.log(shiftCipher('abc', 2));
+console.log(shiftDecipher('cde', 2));
+console.log("-----------");
 console.log(shiftCipher('zyw', 2));
+console.log(shiftDecipher('bay', 2));
+console.log("-----------");
 console.log(shiftCipher('zyw', 25));
-console.log(shiftDecipher('abc', 2));
+console.log(shiftDecipher('yxv', 25));
+console.log("-----------");
+console.log(shiftCipher('abc', 1000));
+console.log(shiftDecipher('zab', 1000));
