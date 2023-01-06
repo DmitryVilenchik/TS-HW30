@@ -40,5 +40,5 @@ console.log("-----------");
 console.log(shiftCipher('zyw', 25));
 console.log(shiftDecipher('yxv', 25));
 console.log("-----------");
-console.log(shiftCipher('abc', 1000));
-console.log(shiftDecipher('zab', 1000));
+console.log(shiftCipher('abc.!A', 1000));
+console.log(shiftDecipher('zab.!A', 1000));
